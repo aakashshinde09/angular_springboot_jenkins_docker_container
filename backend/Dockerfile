@@ -22,11 +22,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 # Expose the port the application runs on
 EXPOSE 8085
 
-# Set the entrypoint
-ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
-
 # Command to run Tomcat
-#CMD ["catalina.sh", "run"]
+CMD ["catalina.sh", "run"]
 
 # Command to run the application
 #CMD ["java", "-jar", "target/spring-backend-v1.jar"]
