@@ -13,17 +13,20 @@ WORKDIR /opt/spring-backend
 # Install dependencies
 RUN apt update 
 RUN apt install openjdk-11-jdk -y
+RUN apt install maven -y
 
-# Use sed to modify the database configuration in application.properties
-RUN sed -i 's/spring.datasource.url=jdbc:mysql:\/\/localhost:3306\/springbackend?useSSL=false/spring.datasource.url=jdbc:mysql:\/\/database-1.cru2a806a2xh.us-east-1.rds.amazonaws.com:3306\/springbackend?useSSL=false/' /opt/spring-backend/src/main/resources/application.properties && \
-    sed -i 's/spring.datasource.username=springbackend/spring.datasource.username=admin/' /opt/spring-backend/src/main/resources/application.properties && \
-    sed -i 's/spring.datasource.password=springbackend/spring.datasource.password=akash123/' /opt/spring-backend/src/main/resources/application.properties
-
-RUN echo "" >> /opt/spring-backend/src/main/resources/application.properties
-RUN echo 'server.port=8085' >> /opt/spring-backend/src/main/resources/application.properties
+COPY entrypoint.sh /usr/local/bin/
+# Make the entrypoint script executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose the port the application runs on
 EXPOSE 8085
 
+# Set the entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# Command to run Tomcat
+#CMD ["catalina.sh", "run"]
+
 # Command to run the application
-CMD ["java", "-jar", "target/spring-backend-v1.jar"]
+#CMD ["java", "-jar", "target/spring-backend-v1.jar"]
