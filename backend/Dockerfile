@@ -15,10 +15,6 @@ RUN apt update
 RUN apt install openjdk-11-jdk -y
 RUN apt install maven -y
 
-COPY entrypoint.sh /usr/local/bin/
-# Make the entrypoint script executable
-RUN chmod +x /usr/local/bin/entrypoint.sh
-
 # Expose the port the application runs on
 EXPOSE 8085
 
