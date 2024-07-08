@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_workers`
 --
 CREATE Database springbackend;
-USE Database springbackend;
+use springbackend;
 CREATE TABLE `tbl_workers` (
   `id` bigint(20) NOT NULL,
   `status` varchar(255) DEFAULT NULL,
