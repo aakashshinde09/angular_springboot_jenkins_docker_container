@@ -23,7 +23,7 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 EXPOSE 8085
 
 # Command to run Tomcat
-CMD ["catalina.sh", "run"]
+#CMD ["catalina.sh", "run"]
 
 # Command to run the application
-#CMD ["java", "-jar", "target/spring-backend-v1.jar"]
+CMD ["java", "-jar", "spring-backend-v1.jar"]
