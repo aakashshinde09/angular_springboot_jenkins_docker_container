@@ -8,8 +8,7 @@ ENV PATH=$JAVA_HOME/bin:$PATH
 COPY . /opt
 
 # Set the working directory in the container
-WORKDIR /opt/spring-backend
-
+WORKDIR /opt
 # Install dependencies
 RUN apt update 
 RUN apt install openjdk-11-jdk -y
